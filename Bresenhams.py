@@ -33,10 +33,10 @@ x = []
 y = []
 x1=int(input("Digite x1"))
 x2=int(input("Digite x2"))
-x.append(x1)
+x.append(x1) #x1 e x2 são o x1 e y1. o X significa o segundo ponto
 x.append(x2)
 y1=int(input("Digite y1"))
 y2=int(input("Digite y2"))
-y.append(y1)
+y.append(y1) #y1 e y2 são o x2 e y2. o y significa o segundo ponto
 y.append(y2)
 reta (x, y)
