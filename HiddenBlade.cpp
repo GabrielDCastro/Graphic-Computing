@@ -28,7 +28,7 @@ GLfloat body[][2] ={ {1, 4}, {1.5, 3}, {2.5, 2}, {3.5, 1.5}, {4.5, 2},{5.5, 3}, 
 };
 GLfloat body1[][2] = { {4.5, 11}, {4.5, 18}, {2.5,16},{2.5, 11}};
 GLfloat arm[][2] = { {4.3, 17}, {4, 24}, {3.5, 25}, {3, 24}, {2.7, 16}, {3.4, 16}, {3.4, 23.5}, {3.5, 24}, {3.6, 23.5}, {3.6,17}};
-/*GLfloat leg[][2] = { {20, 1.5}, {20, 1.3}, {26, 1.3}, {26,1.5}};*/
+GLfloat leg[][2] = { {10,5}, {12,8},{14,5}   };
 GLfloat eye[][2] = { {1.5, 4},       {2, 3}, {2.5, 2.5},          {3.5, 2},       {4.5,2.5}, {5, 3},                     {5.5, 4},
 {4.5,3}, {4,3},         {3.5, 3.5},               {3,3},{2.5,3}, {1.5,4}};
 GLfloat lightZeroPosition[] = {10.0, 14.0, 10.0, 1.0};
@@ -108,8 +108,6 @@ makeDinosaur(void)
     BODY_SIDE1, BODY_EDGE1, BODY_WHOLE1);
   extrudeSolidFromPolygon(arm, sizeof(arm), bodyWidth-2.8,
     ARM_SIDE, ARM_EDGE, ARM_WHOLE);
-  /*extrudeSolidFromPolygon(leg, sizeof(leg), bodyWidth,
-    LEG_SIDE, LEG_EDGE, LEG_WHOLE);*/
   extrudeSolidFromPolygon(eye, sizeof(eye), bodyWidth-2.8,
     EYE_SIDE, EYE_EDGE, EYE_WHOLE);
 }
@@ -125,7 +123,7 @@ drawDinosaur(void)
   glCallList(ARM_WHOLE);
   glPushMatrix();
   glTranslatef(0.0, 0.0, -bodyWidth +4);
-  /*glCallList(LEG_WHOLE);*/
+
   glMaterialfv(GL_FRONT, GL_DIFFUSE, eyeColor);
   glCallList(EYE_WHOLE);
   glPopMatrix();
@@ -340,7 +338,7 @@ main(int argc, char **argv)
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_LIGHTING);
   glMatrixMode(GL_PROJECTION);
-  gluPerspective( /* field of view in degree */ 40.0,
+  gluPerspective( /* field of view in degree */ 52.0,
   /* aspect ratio */ 1.0,
     /* Z near */ 1.0, /* Z far */ 80.0);
   glMatrixMode(GL_MODELVIEW);
