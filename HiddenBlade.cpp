@@ -27,14 +27,15 @@ GLfloat body[][2] ={ {1, 4}, {1.5, 3}, {2.5, 2}, {3.5, 1.5}, {4.5, 2},{5.5, 3}, 
 {6,9}, {6,10}, {5.5,10}, {5.5,11},{1.5,11},{1.5, 10}, {1,10}
 };
 GLfloat body1[][2] = { {4.5, 11}, {4.5, 18}, {2.5,16},{2.5, 11}};
-GLfloat arm[][2] = { {4.3, 17}, {4, 24}, {3.5, 25}, {3, 24}, {2.7, 16}, {3.3, 16}, {3.3, 23.5}, {3.5, 24}, {3.7, 23.5}, {3.7,17}};
+GLfloat arm[][2] = { {4.3, 17}, {4, 24}, {3.5, 25}, {3, 24}, {2.7, 16}, {3.4, 16}, {3.4, 23.5}, {3.5, 24}, {3.6, 23.5}, {3.6,17}};
 /*GLfloat leg[][2] = { {20, 1.5}, {20, 1.3}, {26, 1.3}, {26,1.5}};*/
-GLfloat eye[][2] = { {3, 11}, {3, 17}, {4, 17},{4, 11} };
+GLfloat eye[][2] = { {1.5, 4},       {2, 3}, {2.5, 2.5},          {3.5, 2},       {4.5,2.5}, {5, 3},                     {5.5, 4},
+{4.5,3}, {4,3},         {3.5, 3.5},               {3,3},{2.5,3}, {1.5,4}};
 GLfloat lightZeroPosition[] = {10.0, 14.0, 10.0, 1.0};
 GLfloat lightZeroColor[] = {0.8, 1.0, 0.8, 1.0};
 GLfloat lightOnePosition[] = {-1.0, 1.0, 1.0, 0.0};
 GLfloat lightOneColor[] = {0.6, 0.3, 0.2, 1.0};
-GLfloat skinColor[] = {0.5, 0.5, 0.5}, eyeColor[] = {0, 0, 0};
+GLfloat skinColor[] = {0.5, 0.5, 0.5}, eyeColor[] = {1, 1, 0};
 
 
 void
@@ -101,15 +102,15 @@ extrudeSolidFromPolygon(GLfloat data[][2], unsigned int dataSize,
 void
 makeDinosaur(void)
 {
-  extrudeSolidFromPolygon(body, sizeof(body), bodyWidth-1,
+  extrudeSolidFromPolygon(body, sizeof(body), bodyWidth-2,
     BODY_SIDE, BODY_EDGE, BODY_WHOLE);
-    extrudeSolidFromPolygon(body1, sizeof(body1), bodyWidth-2,
+    extrudeSolidFromPolygon(body1, sizeof(body1), bodyWidth-2.5,
     BODY_SIDE1, BODY_EDGE1, BODY_WHOLE1);
-  extrudeSolidFromPolygon(arm, sizeof(arm), bodyWidth-2.5,
+  extrudeSolidFromPolygon(arm, sizeof(arm), bodyWidth-2.8,
     ARM_SIDE, ARM_EDGE, ARM_WHOLE);
   /*extrudeSolidFromPolygon(leg, sizeof(leg), bodyWidth,
     LEG_SIDE, LEG_EDGE, LEG_WHOLE);*/
-  extrudeSolidFromPolygon(eye, sizeof(eye), bodyWidth-1.8,
+  extrudeSolidFromPolygon(eye, sizeof(eye), bodyWidth-2.8,
     EYE_SIDE, EYE_EDGE, EYE_WHOLE);
 }
 
@@ -126,7 +127,7 @@ drawDinosaur(void)
   glTranslatef(0.0, 0.0, -bodyWidth +4);
   /*glCallList(LEG_WHOLE);*/
   glMaterialfv(GL_FRONT, GL_DIFFUSE, eyeColor);
-  /*glCallList(EYE_WHOLE);*/
+  glCallList(EYE_WHOLE);
   glPopMatrix();
   glPopMatrix();
 }
